@@ -1,0 +1,1 @@
+target_sources(simulator PRIVATE logger.cpp)
