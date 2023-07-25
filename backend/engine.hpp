@@ -7,25 +7,23 @@
 
 #include "pipeline.hpp"
 #include "logger.hpp"
+#include "window_manager.hpp"
 
 namespace backend
 {
-    class Engine : CommonPipeline
-    {
-    public:
-        void init() override;
-        void loop() override;
-        void draw() override;
-        void render() override;
-        void dispose() override;
-    
-    private:
-        GLFWwindow* m_window;
-        uint32_t m_width;
-        uint32_t m_height;
+class Engine : CommonPipeline
+{
+public:
+    void init() override;
+    void loop() override;
+    void draw() override;
+    void render() override;
+    void dispose() override;
 
-        std::shared_ptr<common::Logger> m_logger;
-    };
+private:
+    WindowManager mWindowManager;
+    std::shared_ptr<common::Logger> mLogger;
+};
 }
 
 #endif

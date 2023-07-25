@@ -1,1 +1,1 @@
-target_sources(simulator PRIVATE engine.cpp glad.c)
+target_sources(simulator PRIVATE window.cpp window_utility.cpp window_manager.cpp engine.cpp glad.c)
