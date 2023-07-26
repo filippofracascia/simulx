@@ -6,7 +6,8 @@
 
 namespace backend {
 
-Engine::Engine() {
+Engine::Engine()
+{
 #if defined(BACKEND_CONTEXT) && BACKEND_CONTEXT == OPENGL
     mBackendContext = std::make_unique<GlContext>();
 #elif defined(BACKEND_CONTEXT) && BACKEND_CONTEXT == VULKAN
@@ -16,7 +17,8 @@ Engine::Engine() {
 #endif
 }
 
-void Engine::init() {
+void Engine::init()
+{
     WindowUtility::set_log_callback();
 
     mWindowManager.addWindow(WindowType::MAIN, 1920, 1080);
@@ -35,7 +37,8 @@ void Engine::render()
 {
 }*/
 
-void Engine::dispose() {
+void Engine::dispose()
+{
     mWindowManager.dispose();
     mLogger->log(common::INFO, "[Engine][dispose] Closed application.");
 }

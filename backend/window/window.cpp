@@ -5,7 +5,9 @@ using namespace backend;
 Window::Window()
 {
 }
-Window::Window(int32_t width, int32_t height) : m_width(width), m_height(height)
+Window::Window(int32_t width, int32_t height)
+    : m_width(width)
+    , m_height(height)
 {
 }
 

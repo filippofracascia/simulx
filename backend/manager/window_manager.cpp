@@ -9,43 +9,40 @@ void WindowManager::init()
 {
     mLogger = common::Logger::getInstance();
 
-    if(!glfwInit())
-    {
+    if (!glfwInit()) {
         mLogger->log(common::FATAL, "[WindowManager][init] Error initializing glfw.");
         return;
     }
     mLogger->log(common::INFO, "[WindowManager][init] Successfully initialized glfw.");
 
-    for (auto& window : mWindows) 
-    {
-        switch(window.first)
-        {
-        case MAIN: 
-            if(WindowUtility::create_window(*window.second, *window.second->get_width_ptr(), *window.second->get_height_ptr()))
-            {
+    for (auto& window : mWindows) {
+        switch (window.first) {
+        case MAIN:
+            if (WindowUtility::create_window(*window.second, *window.second->get_width_ptr(), *window.second->get_height_ptr())) {
                 mLogger->log(common::INFO, "[WindowManager][init] Successfully initialized main window.");
                 WindowUtility::make_context_current(*window.second);
                 glClearColor(0.1f, 0.2f, 0.1f, 1.0f);
-            }
-            else
-            {
+            } else {
                 mLogger->log(common::FATAL, "[WindowManager][init] Error initializing main window.");
                 glfwTerminate();
                 return;
             }
             break;
-        case INSPECTOR: break;
-        case VIEW: break;
-        case CONSOLE: break;
-        default: break;
+        case INSPECTOR:
+            break;
+        case VIEW:
+            break;
+        case CONSOLE:
+            break;
+        default:
+            break;
         }
     }
 }
 void WindowManager::loop()
 {
     for (auto& window : mWindows) {
-        while(WindowUtility::is_open(*window.second))
-        {
+        while (WindowUtility::is_open(*window.second)) {
             WindowUtility::poll_events();
             WindowUtility::swap_buffers(*window.second);
         }
@@ -59,16 +56,11 @@ void WindowManager::render()
 }*/
 void WindowManager::dispose()
 {
-    for (auto& window : mWindows) 
-    {
-        if(WindowUtility::is_open(*window.second))
-        {
-            if(WindowUtility::destroy_window(*window.second))
-            {
+    for (auto& window : mWindows) {
+        if (WindowUtility::is_open(*window.second)) {
+            if (WindowUtility::destroy_window(*window.second)) {
                 mLogger->log(common::LogLevel::INFO, "[WindowManager][dispose] Destroyed window ", window.first, ".");
-            }
-            else 
-            {
+            } else {
                 mLogger->log(common::LogLevel::ERROR, "[WindowManager][dispose] Could not destroy ", window.first, ".");
             }
         }

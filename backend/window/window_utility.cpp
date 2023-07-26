@@ -2,8 +2,8 @@
 #include <cstddef>
 #include <memory>
 
-#include "window_utility.hpp"
 #include "common/logger.hpp"
+#include "window_utility.hpp"
 
 using namespace backend;
 
@@ -14,12 +14,9 @@ bool WindowUtility::create_window(Window& window, int32_t width, int32_t height)
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     GLFWwindow* winPtr = nullptr;
-    if((winPtr = glfwCreateWindow(width, height, "simulx", NULL, NULL)) == NULL)
-    {
+    if ((winPtr = glfwCreateWindow(width, height, "simulx", NULL, NULL)) == NULL) {
         return false;
-    }
-    else 
-    {
+    } else {
         window.set_win_ptr(winPtr);
         return true;
     }
@@ -27,8 +24,7 @@ bool WindowUtility::create_window(Window& window, int32_t width, int32_t height)
 /// @todo: implement error handling for glfw.
 bool WindowUtility::destroy_window(Window& window)
 {
-    if(is_initialized(window))
-    {
+    if (is_initialized(window)) {
         glfwDestroyWindow(window.get_win_ptr());
         return true;
     }
@@ -57,15 +53,13 @@ void WindowUtility::make_context_current(Window& window)
 }
 void WindowUtility::get_window_size(Window& window)
 {
-    if(is_initialized(window))
-    {
+    if (is_initialized(window)) {
         glfwGetWindowSize(window.get_win_ptr(), window.get_width_ptr(), window.get_height_ptr());
     }
 }
 void WindowUtility::get_mouse_pos(Window& window)
 {
-    if(is_initialized(window))
-    {
+    if (is_initialized(window)) {
         glfwGetCursorPos(window.get_win_ptr(), window.get_mouse_pos_x_ptr(), window.get_mouse_pos_y_ptr());
     }
 }

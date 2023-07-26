@@ -19,19 +19,19 @@ namespace backend {
  */
 class BackendContext : CommonPipeline {
 public:
-  virtual ~BackendContext() = default;
+    virtual ~BackendContext() = default;
 
-  virtual void init() override = 0;
-  virtual void loop() override = 0;
-  // void draw() override;
-  // void render() override;
-  virtual void dispose() override = 0;
+    virtual void init() override = 0;
+    virtual void loop() override = 0;
+    // void draw() override;
+    // void render() override;
+    virtual void dispose() override = 0;
 
-  /**
-   * @brief Initialize shaders for current context.
-   *
-   */
-  virtual void initShaders() = 0;
+    /**
+     * @brief Initialize shaders for current context.
+     *
+     */
+    virtual void initShaders() = 0;
 };
 } // namespace backend
 
