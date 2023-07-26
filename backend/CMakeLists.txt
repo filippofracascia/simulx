@@ -1,1 +1,4 @@
-target_sources(simulator PRIVATE window.cpp window_utility.cpp window_manager.cpp engine.cpp glad.c)
+add_subdirectory(context)
+add_subdirectory(window)
+add_subdirectory(engine)
+add_subdirectory(manager)

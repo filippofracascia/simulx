@@ -19,7 +19,7 @@ function install
     git submodule update --init --recursive
     compile_dependencies
     mkdir build && cd build
-    cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=1 && make -j4
+    cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DBACKEND_CONTEXT=OPENGL && make -j4
     cd ..
 }
 

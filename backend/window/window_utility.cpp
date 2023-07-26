@@ -1,8 +1,9 @@
-#include "window_utility.hpp"
-#include "logger.hpp"
 #include <GLFW/glfw3.h>
 #include <cstddef>
 #include <memory>
+
+#include "window_utility.hpp"
+#include "common/logger.hpp"
 
 using namespace backend;
 
@@ -43,6 +44,7 @@ bool WindowUtility::is_open(Window& window)
 }
 void WindowUtility::swap_buffers(Window& window)
 {
+    glClear(GL_COLOR_BUFFER_BIT);
     glfwSwapBuffers(window.get_win_ptr());
 }
 void WindowUtility::poll_events()
@@ -72,7 +74,7 @@ void WindowUtility::set_log_callback()
     glfwSetErrorCallback(glfwErrorCallback);
 }
 
-void setErrorCallback(int error, const char* description)
+void WindowUtility::glfwErrorCallback(int error, const char* description)
 {
     auto logger = common::Logger::getInstance();
     logger->log(common::LogLevel::ERROR, "[GLFW ERROR ", error, "]: ", description);

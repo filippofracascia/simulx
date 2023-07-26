@@ -1,10 +1,7 @@
-#include "window_manager.hpp"
-#include "GLFW/glfw3.h"
-#include "logger.hpp"
-#include "window.hpp"
-#include "window_utility.hpp"
 #include <cstdint>
 #include <memory>
+
+#include "window_manager.hpp"
 
 using namespace backend;
 
@@ -54,12 +51,12 @@ void WindowManager::loop()
         }
     }
 }
-void WindowManager::draw()
+/*void WindowManager::draw()
 {
 }
 void WindowManager::render()
 {
-}
+}*/
 void WindowManager::dispose()
 {
     for (auto& window : mWindows) 

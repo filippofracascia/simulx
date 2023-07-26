@@ -1,11 +1,11 @@
-#ifndef WINDOWMANAGER_HPP
-#define WINDOWMANAGER_HPP
+#ifndef WINDOW_MANAGER_HPP
+#define WINDOW_MANAGER_HPP
 
 #include <map>
 
-#include "logger.hpp"
-#include "pipeline.hpp"
-#include "window_utility.hpp"
+#include "common/logger.hpp"
+#include "common/pipeline.hpp"
+#include "backend/window/window_utility.hpp"
 
 namespace backend
 {
@@ -18,8 +18,8 @@ class WindowManager : CommonPipeline
 public:
     void init() override; 
     void loop() override; 
-    void draw() override; 
-    void render() override;
+    //void draw() override; 
+    //void render() override;
     void dispose() override;
 
     void addWindow(WindowType type, int32_t width, int32_t height);
