@@ -1,7 +1,6 @@
-#ifndef WINDOWUTILITY_HPP
-#define WINDOWUTILITY_HPP
+#ifndef WINDOW_UTILITY_HPP
+#define WINDOW_UTILITY_HPP
 
-#include <GLFW/glfw3.h>
 #include <cstdint>
 #include <memory>
 

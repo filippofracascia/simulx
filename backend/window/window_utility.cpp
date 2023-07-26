@@ -1,4 +1,3 @@
-#include <GLFW/glfw3.h>
 #include <cstddef>
 #include <memory>
 
@@ -9,9 +8,11 @@ using namespace backend;
 
 bool WindowUtility::create_window(Window& window, int32_t width, int32_t height)
 {
+#if defined (BACKEND_CONTEXT) && BACKEND_CONTEXT == OPENGL
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+#endif
 
     GLFWwindow* winPtr = nullptr;
     if ((winPtr = glfwCreateWindow(width, height, "simulx", NULL, NULL)) == NULL) {

@@ -29,14 +29,6 @@ void Engine::init()
 
 void Engine::loop() { mWindowManager.loop(); }
 
-/*void Engine::draw()
-{
-}
-
-void Engine::render()
-{
-}*/
-
 void Engine::dispose()
 {
     mWindowManager.dispose();

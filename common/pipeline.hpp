@@ -11,8 +11,20 @@ public:
     virtual ~CommonPipeline() = default;
 
 protected:
+    /**
+     * @brief Initialize the object and prepare it for the pipeline
+     * 
+     */
     virtual void init() = 0;
+    /**
+     * @brief Update the object every new pipeline cycle
+     * 
+     */
     virtual void loop() = 0;
+    /**
+     * @brief Dispose the object from the pipeline
+     * 
+     */
     virtual void dispose() = 0;
 };
 

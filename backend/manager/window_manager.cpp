@@ -21,7 +21,7 @@ void WindowManager::init()
             if (WindowUtility::create_window(*window.second, *window.second->get_width_ptr(), *window.second->get_height_ptr())) {
                 mLogger->log(common::INFO, "[WindowManager][init] Successfully initialized main window.");
                 WindowUtility::make_context_current(*window.second);
-                glClearColor(0.1f, 0.2f, 0.1f, 1.0f);
+                glClearColor(0.05f, 0.06f, 0.06f, 1.0f);
             } else {
                 mLogger->log(common::FATAL, "[WindowManager][init] Error initializing main window.");
                 glfwTerminate();
@@ -48,12 +48,6 @@ void WindowManager::loop()
         }
     }
 }
-/*void WindowManager::draw()
-{
-}
-void WindowManager::render()
-{
-}*/
 void WindowManager::dispose()
 {
     for (auto& window : mWindows) {

@@ -11,8 +11,6 @@ class GlContext : BackendContext {
 public:
     void init() override;
     void loop() override;
-    // void draw() override;
-    // void render() override;
     void dispose() override;
 
     void initShaders() override;

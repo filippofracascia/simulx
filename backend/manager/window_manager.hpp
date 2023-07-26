@@ -8,21 +8,43 @@
 #include "common/pipeline.hpp"
 
 namespace backend {
+
+/**
+ * @brief The unique type of the window
+ * 
+ */
 enum WindowType {
     MAIN,
     INSPECTOR,
     VIEW,
     CONSOLE
 };
+
+/**
+ * @brief Container for windows.
+ * It's responsable for the life of the windows
+ * 
+ */
 class WindowManager : CommonPipeline {
 public:
     void init() override;
     void loop() override;
-    // void draw() override;
-    // void render() override;
     void dispose() override;
 
+    /**
+     * @brief Add a window to the pipeline
+     * 
+     * @param type the type of the window
+     * @param width the width of the window
+     * @param height the height of the window
+     */
     void addWindow(WindowType type, int32_t width, int32_t height);
+
+    /**
+     * @brief Deletes a window from the pipeline
+     * 
+     * @param type the type of the window to delete
+     */
     void deleteWindow(WindowType type);
 
 private:

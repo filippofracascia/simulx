@@ -23,8 +23,6 @@ public:
 
     virtual void init() override = 0;
     virtual void loop() override = 0;
-    // void draw() override;
-    // void render() override;
     virtual void dispose() override = 0;
 
     /**
