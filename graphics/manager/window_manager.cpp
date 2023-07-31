@@ -3,7 +3,8 @@
 
 #include "window_manager.hpp"
 
-using namespace backend;
+namespace graphics
+{
 
 void WindowManager::init()
 {
@@ -15,13 +16,16 @@ void WindowManager::init()
     }
     mLogger->log(common::INFO, "[WindowManager][init] Successfully initialized glfw.");
 
+    mGui.init();
+
     for (auto& window : mWindows) {
         switch (window.first) {
         case MAIN:
             if (WindowUtility::create_window(*window.second, *window.second->get_width_ptr(), *window.second->get_height_ptr())) {
                 mLogger->log(common::INFO, "[WindowManager][init] Successfully initialized main window.");
                 WindowUtility::make_context_current(*window.second);
-                glClearColor(0.05f, 0.06f, 0.06f, 1.0f);
+                mGui.initWindowFields(*window.second);
+                WindowUtility::set_bg_color({0.05f, 0.06f, 0.06f, 1.0f});
             } else {
                 mLogger->log(common::FATAL, "[WindowManager][init] Error initializing main window.");
                 glfwTerminate();
@@ -44,6 +48,11 @@ void WindowManager::loop()
     for (auto& window : mWindows) {
         while (WindowUtility::is_open(*window.second)) {
             WindowUtility::poll_events();
+            WindowUtility::color_bg();
+            if(window.first == WindowType::MAIN)
+            {
+                mGui.loop();
+            }
             WindowUtility::swap_buffers(*window.second);
         }
     }
@@ -59,6 +68,7 @@ void WindowManager::dispose()
             }
         }
     }
+    mGui.dispose();
     glfwTerminate();
     mLogger->log(common::INFO, "[WindowManager][dispose] Successfully closed window context.");
 }
@@ -71,4 +81,5 @@ void WindowManager::addWindow(WindowType type, int32_t width, int32_t height)
 void WindowManager::deleteWindow(WindowType type)
 {
     mWindows.erase(type);
+}
 }

@@ -3,10 +3,11 @@
 
 #include <cstdint>
 #include <memory>
+#include <array>
 
 #include "window.hpp"
 
-namespace backend {
+namespace graphics {
 
 /**
  * @brief WindowUtility
@@ -55,6 +56,19 @@ public:
      * @return false
      */
     static bool is_open(Window& window);
+
+    /**
+     * @brief Sets the background color with the given RGBA color ramp
+     * 
+     * @param background array representing an RGBA color.
+     */
+    static void set_bg_color(const std::array<float, 4>& background);
+
+    /**
+     * @brief Colors the bg (gets called every frame)
+     * 
+     */
+    static void color_bg();
 
     /**
      * @brief Swap the front and back buffers of the window

@@ -3,11 +3,12 @@
 
 #include <map>
 
-#include "backend/window/window_utility.hpp"
+#include "graphics/window/window_utility.hpp"
+#include "graphics/gui/gui.hpp"
 #include "common/logger.hpp"
 #include "common/pipeline.hpp"
 
-namespace backend {
+namespace graphics {
 
 /**
  * @brief The unique type of the window
@@ -49,6 +50,8 @@ public:
 
 private:
     std::map<WindowType, std::unique_ptr<Window>> mWindows;
+    Gui mGui;
+
     std::shared_ptr<common::Logger> mLogger;
 };
 }

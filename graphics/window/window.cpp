@@ -1,6 +1,7 @@
 #include "window.hpp"
 
-using namespace backend;
+namespace graphics
+{
 
 Window::Window()
 {
@@ -46,4 +47,5 @@ double* Window::get_mouse_pos_x_ptr() noexcept
 double* Window::get_mouse_pos_y_ptr() noexcept
 {
     return &m_mouse_pos_y;
+}
 }

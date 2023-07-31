@@ -1,4 +1,6 @@
 add_subdirectory(context)
 add_subdirectory(window)
 add_subdirectory(engine)
+add_subdirectory(shader)
 add_subdirectory(manager)
+add_subdirectory(gui)

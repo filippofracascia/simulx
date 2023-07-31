@@ -1,1 +1,0 @@
-target_sources(simulator PRIVATE gui.cpp)

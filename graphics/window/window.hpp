@@ -5,7 +5,7 @@
 #include <cstdint>
 #include <memory>
 
-namespace backend {
+namespace graphics {
 struct Window {
 public:
     Window(const Window&) = delete;
@@ -32,6 +32,6 @@ private:
     double m_mouse_pos_x;
     double m_mouse_pos_y;
 };
-} // namespace backend
+} // namespace graphics
 
 #endif

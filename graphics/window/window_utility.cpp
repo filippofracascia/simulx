@@ -4,7 +4,8 @@
 #include "common/logger.hpp"
 #include "window_utility.hpp"
 
-using namespace backend;
+namespace graphics
+{
 
 bool WindowUtility::create_window(Window& window, int32_t width, int32_t height)
 {
@@ -39,9 +40,16 @@ bool WindowUtility::is_open(Window& window)
 {
     return is_initialized(window) && !glfwWindowShouldClose(window.get_win_ptr());
 }
-void WindowUtility::swap_buffers(Window& window)
+void WindowUtility::set_bg_color(const std::array<float, 4>& background)
+{
+    glClearColor(background[0], background[1], background[2], background[3]);
+}
+void WindowUtility::color_bg()
 {
     glClear(GL_COLOR_BUFFER_BIT);
+}
+void WindowUtility::swap_buffers(Window& window)
+{
     glfwSwapBuffers(window.get_win_ptr());
 }
 void WindowUtility::poll_events()
@@ -73,4 +81,5 @@ void WindowUtility::glfwErrorCallback(int error, const char* description)
 {
     auto logger = common::Logger::getInstance();
     logger->log(common::LogLevel::ERROR, "[GLFW ERROR ", error, "]: ", description);
+}
 }

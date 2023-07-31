@@ -6,7 +6,7 @@
 #include "backend_context.hpp"
 #include "common/logger.hpp"
 
-namespace backend {
+namespace graphics {
 class GlContext : BackendContext {
 public:
     void init() override;

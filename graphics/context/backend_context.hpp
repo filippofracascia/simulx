@@ -3,7 +3,7 @@
 
 #include "common/pipeline.hpp"
 
-namespace backend {
+namespace graphics {
 
 /**
  * @brief \class BackendContext is the base class for a 3D context
